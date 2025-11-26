@@ -8,6 +8,16 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+
+  int currentIndex = 0;
+
+  final List<Widget> pages = [
+    Center(child: Text('Home')),
+    Center(child: Text('Search')),
+    Center(child: Text('Cart')),
+    Center(child: Text('Profile')),
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
