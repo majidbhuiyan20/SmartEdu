@@ -1,25 +1,11 @@
 import 'package:flutter/material.dart';
 
 class AppColors {
-  // static ColorScheme darkColorScheme = ColorScheme(
-  //   brightness: Brightness.dark,
-  //   primary: Color(0xffffffff),
-  //   onPrimary: Color(0xffffffff),
-  //   secondary: Color(0xffffffff),
-  //   onSecondary: Color(0xffA5A5AB),
-  //   error: Color.fromRGBO(235, 61, 77, 0.09),
-  //   onError: Color(0xffEB3D4D),
-  //   surface: Color(0xff161721),
-  //   onSurface: Color(0xff2F2A29),
-  // );
-
   //container colors
   static const Color btnBackgroundColor = Color(0xff2A4566);
-  static const Color whiteBackgroundColor = Color(0xffFFFFFF);
-  static const Color whiteButtonBorderColor = Color(0xff627B99);
 
-
-  static const Color secondaryColor = Color(0xff627B99);
+  static const Color secondaryColor = Color(0xff6C3BFF);
+  static const Color primaryColor = Color(0xff3A7AFE);
 
 
 
