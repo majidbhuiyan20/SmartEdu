@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../home/view/home_screen.dart';
+import '../../notes/view/note_screen.dart';
+import '../../routine/view/routine_screen.dart';
+import '../../tools/view/tools_screen.dart';
 import '../viewmodel/bottom_nav_bar_viewmodel.dart';
 
 class BottomNavBarScreen extends ConsumerStatefulWidget {
@@ -11,26 +15,46 @@ class BottomNavBarScreen extends ConsumerStatefulWidget {
 }
 
 class _BottomNavBarScreenState extends ConsumerState<BottomNavBarScreen> {
+  // Screen list with separate screen widgets
   final List<Widget> _screenList = [
-    Scaffold(body: Center(child: Text("Home"))),
-    Scaffold(body: Center(child: Text("dangerous"))),
-    Scaffold(body: Center(child: Text("search"))),
-    Scaffold(body: Center(child: Text("settings"))),
+    HomeScreen(),
+    RoutineScreen(),
+    NoteScreen(),
+    ToolsScreen(),
   ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: _screenList[ref.watch(bottomNavBarProvider)],
       bottomNavigationBar: BottomNavigationBar(
-        onTap: ref.read(bottomNavBarProvider.notifier).onItemTapped,
-        items: [
-          BottomNavigationBarItem(icon: Icon(Icons.home)),
-          BottomNavigationBarItem(icon: Icon(Icons.dangerous)),
-          BottomNavigationBarItem(icon: Icon(Icons.search)),
-          BottomNavigationBarItem(icon: Icon(Icons.settings)),
+        currentIndex: ref.watch(bottomNavBarProvider),
+        onTap: (index) {
+          ref.read(bottomNavBarProvider.notifier).onItemTapped(index);
+        },
+        items: const [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: 'Home',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.schedule),
+            label: 'Routine',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.note),
+            label: 'Note',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.build),
+            label: 'Tools',
+          ),
         ],
+        selectedItemColor: Colors.blue,
+        unselectedItemColor: Colors.grey,
+        showUnselectedLabels: true,
+        type: BottomNavigationBarType.fixed,
       ),
     );
   }
 }
-
